@@ -1,4 +1,4 @@
-package com.github.davidmoten.util;
+package com.github.davidmoten.guavamini;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -7,7 +7,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import com.github.davidmoten.util.Optional.NotPresentException;
+import com.github.davidmoten.guavamini.Optional;
+import com.github.davidmoten.guavamini.Optional.NotPresentException;
 
 public class OptionalTest {
 

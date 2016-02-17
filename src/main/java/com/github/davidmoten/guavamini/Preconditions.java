@@ -1,6 +1,10 @@
-package com.github.davidmoten.util;
+package com.github.davidmoten.guavamini;
 
 public final class Preconditions {
+
+    private Preconditions() {
+        // prevent instantiation
+    }
 
     public static void checkNotNull(Object o) {
         checkNotNull(o, null);

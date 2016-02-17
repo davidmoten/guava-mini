@@ -1,11 +1,37 @@
-package com.github.davidmoten.util;
+package com.github.davidmoten.guavamini;
 
 import java.util.Collections;
+import java.util.EnumSet;
 import java.util.HashSet;
 
-public class Sets {
-    private static final int MAX_POWER_OF_TWO = 1 << (Integer.SIZE - 2);
+import com.github.davidmoten.guavamini.annotations.VisibleForTesting;
 
+public final class Sets {
+
+    private Sets() {
+        // prevent instantiation
+    }
+
+    static final int MAX_POWER_OF_TWO = 1 << (Integer.SIZE - 2);
+
+    /**
+     * Creates a <i>mutable</i> {@code HashSet} instance containing the given
+     * elements in unspecified order.
+     *
+     * <p>
+     * <b>Note:</b> if mutability is not required and the elements are non-null,
+     * use an overload of {@link ImmutableSet#of()} (for varargs) or
+     * {@link ImmutableSet#copyOf(Object[])} (for an array) instead.
+     *
+     * <p>
+     * <b>Note:</b> if {@code E} is an {@link Enum} type, use
+     * {@link EnumSet#of(Enum, Enum[])} instead.
+     *
+     * @param elements
+     *            the elements that the set should contain
+     * @return a new {@code HashSet} containing those elements (minus
+     *         duplicates)
+     */
     public static <E> HashSet<E> newHashSet(E... elements) {
         Preconditions.checkNotNull(elements);
         HashSet<E> set = newHashSetWithExpectedSize(elements.length);
@@ -36,6 +62,7 @@ public class Sets {
      * as long as it grows no larger than expectedSize and the load factor is >=
      * its default (0.75).
      */
+    @VisibleForTesting
     static int capacity(int expectedSize) {
         if (expectedSize < 3) {
             checkNonnegative(expectedSize, "expectedSize");
@@ -47,6 +74,7 @@ public class Sets {
         return Integer.MAX_VALUE; // any large value
     }
 
+    @VisibleForTesting
     static int checkNonnegative(int value, String name) {
         if (value < 0) {
             throw new IllegalArgumentException(name + " cannot be negative but was: " + value);

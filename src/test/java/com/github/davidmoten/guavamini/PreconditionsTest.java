@@ -1,10 +1,12 @@
-package com.github.davidmoten.util;
+package com.github.davidmoten.guavamini;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import com.github.davidmoten.junit.Asserts;
 
 public class PreconditionsTest {
 
@@ -46,6 +48,11 @@ public class PreconditionsTest {
     @Test
     public void testCheckArgumentWithoutMessageDoesNotThrowIAE() {
         Preconditions.checkArgument(true);
+    }
+
+    @Test
+    public void testCoverage() {
+        Asserts.assertIsUtilityClass(Preconditions.class);
     }
 
 }
