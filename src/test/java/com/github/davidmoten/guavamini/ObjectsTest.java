@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.math.BigDecimal;
+
 import org.junit.Test;
 
 import com.github.davidmoten.junit.Asserts;
@@ -38,6 +40,11 @@ public class ObjectsTest {
     @Test
     public void objectsAreEqual() {
         assertTrue(Objects.equal("a", "a"));
+    }
+
+    @Test
+    public void objectsAreEqualWithDifferentReferences() {
+        assertTrue(Objects.equal(new BigDecimal(1), new BigDecimal(1)));
     }
 
     @Test
