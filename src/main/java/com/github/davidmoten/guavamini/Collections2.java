@@ -10,8 +10,14 @@ public final class Collections2 {
 
     /**
      * Used to avoid http://bugs.sun.com/view_bug.do?bug_id=6558557
+     * 
+     * @param iterable
+     *            input
+     * @param <T>
+     *            generic type of collection
+     * @return input cast as collection
      */
-    public static <T> Collection<T> cast(Iterable<T> iterable) {
+    static <T> Collection<T> cast(Iterable<T> iterable) {
         return (Collection<T>) iterable;
     }
 }

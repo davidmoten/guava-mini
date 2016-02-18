@@ -14,6 +14,8 @@ public final class Iterators {
      * will be left exhausted: its {@code hasNext()} method will return
      * {@code false}.
      *
+     * @param <T>
+     *            generic type of collection
      * @return {@code true} if {@code collection} was modified as a result of
      *         this operation
      */
