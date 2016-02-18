@@ -2,7 +2,12 @@ package com.github.davidmoten.guavamini;
 
 import java.util.Collection;
 
-public class Collections2 {
+public final class Collections2 {
+
+    private Collections2() {
+        // prevent instantiation
+    }
+
     /**
      * Used to avoid http://bugs.sun.com/view_bug.do?bug_id=6558557
      */

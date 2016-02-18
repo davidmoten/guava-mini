@@ -3,7 +3,11 @@ package com.github.davidmoten.guavamini;
 import java.util.Collection;
 import java.util.Iterator;
 
-public class Iterators {
+public final class Iterators {
+
+    private Iterators() {
+        // prevent instantiation
+    }
 
     /**
      * Adds all elements in {@code iterator} to {@code collection}. The iterator
