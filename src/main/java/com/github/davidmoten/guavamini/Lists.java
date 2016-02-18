@@ -4,7 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
+import com.github.davidmoten.guavamini.annotations.VisibleForTesting;
+
 public final class Lists {
+
+    private Lists() {
+        // cannot instantiate
+    }
+
     /**
      * Creates a <i>mutable</i> {@code ArrayList} instance containing the given
      * elements.
@@ -33,7 +40,8 @@ public final class Lists {
         return list;
     }
 
-    private static int computeArrayListCapacity(int arraySize) {
+    @VisibleForTesting
+    static int computeArrayListCapacity(int arraySize) {
         Preconditions.checkArgument(arraySize >= 0, "arraySize must be non-negative");
 
         // TODO(kevinb): Figure out the right behavior, and document it
@@ -49,7 +57,8 @@ public final class Lists {
      *         {@code int} type, {@link Integer#MAX_VALUE} if it is too large,
      *         or {@link Integer#MIN_VALUE} if it is too small
      */
-    private static int saturatedCast(long value) {
+    @VisibleForTesting
+    static int saturatedCast(long value) {
         if (value > Integer.MAX_VALUE) {
             return Integer.MAX_VALUE;
         }
