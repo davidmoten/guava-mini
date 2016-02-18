@@ -4,6 +4,10 @@ import java.util.Arrays;
 
 public final class Objects {
 
+    private Objects() {
+        // prevent instantiation
+    }
+
     public static int hashCode(Object... objects) {
         return Arrays.hashCode(objects);
     }
