@@ -14,6 +14,10 @@ public final class Iterators {
      * will be left exhausted: its {@code hasNext()} method will return
      * {@code false}.
      *
+     * @param addTo
+     *            collection to add to
+     * @param iterator
+     *            iterator whose elements will be added to the collection
      * @param <T>
      *            generic type of collection
      * @return {@code true} if {@code collection} was modified as a result of
