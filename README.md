@@ -8,6 +8,8 @@ Compatible with java 6 and later.
 
 Status: *on Maven Central*
 
+Maven site reports are [here](http://davidmoten.github.io/guava-mini/index.html) including [javadoc](http://davidmoten.github.io/guava-mini/apidocs/index.html).
+
 Features
 -----------
 
