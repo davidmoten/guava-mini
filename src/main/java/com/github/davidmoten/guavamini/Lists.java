@@ -2,7 +2,9 @@ package com.github.davidmoten.guavamini;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 
 import com.github.davidmoten.guavamini.annotations.VisibleForTesting;
 
@@ -68,4 +70,60 @@ public final class Lists {
         return (int) value;
     }
 
+    /**
+     * Creates a <i>mutable</i>, empty {@code ArrayList} instance (for Java 6
+     * and earlier).
+     *
+     * <p>
+     * <b>Note:</b> if mutability is not required, use
+     * {@link ImmutableList#of()} instead.
+     *
+     * <p>
+     * <b>Note for Java 7 and later:</b> this method is now unnecessary and
+     * should be treated as deprecated. Instead, use the {@code ArrayList}
+     * {@linkplain ArrayList#ArrayList() constructor} directly, taking advantage
+     * of the new <a href="http://goo.gl/iz2Wi">"diamond" syntax</a>.
+     */
+    public static <E> ArrayList<E> newArrayList() {
+        return new ArrayList<E>();
+    }
+
+    /**
+     * Creates a <i>mutable</i> {@code ArrayList} instance containing the given
+     * elements; a very thin shortcut for creating an empty list then calling
+     * {@link Iterables#addAll}.
+     *
+     * <p>
+     * <b>Note:</b> if mutability is not required and the elements are non-null,
+     * use {@link ImmutableList#copyOf(Iterable)} instead. (Or, change
+     * {@code elements} to be a {@link FluentIterable} and call
+     * {@code elements.toList()}.)
+     *
+     * <p>
+     * <b>Note for Java 7 and later:</b> if {@code elements} is a
+     * {@link Collection}, you don't need this method. Use the {@code ArrayList}
+     * {@linkplain ArrayList#ArrayList(Collection) constructor} directly, taking
+     * advantage of the new <a href="http://goo.gl/iz2Wi">"diamond" syntax</a>.
+     */
+    public static <E> ArrayList<E> newArrayList(Iterable<? extends E> elements) {
+        Preconditions.checkNotNull(elements); // for GWT
+        // Let ArrayList's sizing logic work, if possible
+        return (elements instanceof Collection) ? new ArrayList<E>(Collections2.cast(elements))
+                : newArrayList(elements.iterator());
+    }
+
+    /**
+     * Creates a <i>mutable</i> {@code ArrayList} instance containing the given
+     * elements; a very thin shortcut for creating an empty list and then
+     * calling {@link Iterators#addAll}.
+     *
+     * <p>
+     * <b>Note:</b> if mutability is not required and the elements are non-null,
+     * use {@link ImmutableList#copyOf(Iterator)} instead.
+     */
+    public static <E> ArrayList<E> newArrayList(Iterator<? extends E> elements) {
+        ArrayList<E> list = newArrayList();
+        Iterators.addAll(list, elements);
+        return list;
+    }
 }

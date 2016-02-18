@@ -102,7 +102,7 @@ public final class Sets {
      *         duplicates)
      */
     public static <E> HashSet<E> newHashSet(Iterable<? extends E> elements) {
-        return (elements instanceof Collection) ? new HashSet<E>(cast(elements))
+        return (elements instanceof Collection) ? new HashSet<E>(Collections2.cast(elements))
                 : newHashSet(elements.iterator());
     }
 
@@ -125,7 +125,7 @@ public final class Sets {
      */
     public static <E> HashSet<E> newHashSet(Iterator<? extends E> elements) {
         HashSet<E> set = newHashSet();
-        addAll(set, elements);
+        Iterators.addAll(set, elements);
         return set;
     }
 
@@ -144,32 +144,6 @@ public final class Sets {
      */
     public static <E> HashSet<E> newHashSet() {
         return new HashSet<E>();
-    }
-
-    /**
-     * Adds all elements in {@code iterator} to {@code collection}. The iterator
-     * will be left exhausted: its {@code hasNext()} method will return
-     * {@code false}.
-     *
-     * @return {@code true} if {@code collection} was modified as a result of
-     *         this operation
-     */
-    @VisibleForTesting
-    static <T> boolean addAll(Collection<T> addTo, Iterator<? extends T> iterator) {
-        Preconditions.checkNotNull(addTo);
-        Preconditions.checkNotNull(iterator);
-        boolean wasModified = false;
-        while (iterator.hasNext()) {
-            wasModified |= addTo.add(iterator.next());
-        }
-        return wasModified;
-    }
-
-    /**
-     * Used to avoid http://bugs.sun.com/view_bug.do?bug_id=6558557
-     */
-    static <T> Collection<T> cast(Iterable<T> iterable) {
-        return (Collection<T>) iterable;
     }
 
 }

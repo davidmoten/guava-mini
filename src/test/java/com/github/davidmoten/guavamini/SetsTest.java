@@ -3,6 +3,8 @@ package com.github.davidmoten.guavamini;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Iterator;
+
 import org.junit.Test;
 
 import com.github.davidmoten.junit.Asserts;
@@ -12,6 +14,27 @@ public class SetsTest {
     @Test
     public void testCreate() {
         assertTrue(Sets.newHashSet(1, 2, 3).contains(2));
+    }
+
+    @Test
+    public void testCreateFromIterator() {
+        assertTrue(Sets.newHashSet(Sets.newHashSet(1, 2, 3).iterator()).contains(2));
+    }
+
+    @Test
+    public void testCreateFromIterable() {
+        assertTrue(Sets.newHashSet(Sets.newHashSet(1, 2, 3)).contains(2));
+    }
+
+    @Test
+    public void testCreateFromNonCollectionIterable() {
+        assertTrue(Sets.newHashSet(new Iterable<Integer>() {
+
+            @Override
+            public Iterator<Integer> iterator() {
+                return Sets.newHashSet(1, 2).iterator();
+            }
+        }).contains(2));
     }
 
     @Test
