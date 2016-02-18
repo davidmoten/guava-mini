@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>guava-mini</artifactId>
-    <version>0.7.5-SNAPSHOT</version>
+    <version>0.1-SNAPSHOT</version>
 
     <name>${project.artifactId}</name>
     <description>Classes taken from Guava</description>

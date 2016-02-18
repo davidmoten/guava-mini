@@ -1,8 +1,10 @@
 package com.github.davidmoten.guavamini;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.EnumSet;
 import java.util.HashSet;
+import java.util.Iterator;
 
 import com.github.davidmoten.guavamini.annotations.VisibleForTesting;
 
@@ -80,6 +82,94 @@ public final class Sets {
             throw new IllegalArgumentException(name + " cannot be negative but was: " + value);
         }
         return value;
+    }
+
+    /**
+     * Creates a <i>mutable</i> {@code HashSet} instance containing the given
+     * elements in unspecified order.
+     *
+     * <p>
+     * <b>Note:</b> if mutability is not required and the elements are non-null,
+     * use {@link ImmutableSet#copyOf(Iterable)} instead.
+     *
+     * <p>
+     * <b>Note:</b> if {@code E} is an {@link Enum} type, use
+     * {@link #newEnumSet(Iterable, Class)} instead.
+     *
+     * @param elements
+     *            the elements that the set should contain
+     * @return a new {@code HashSet} containing those elements (minus
+     *         duplicates)
+     */
+    public static <E> HashSet<E> newHashSet(Iterable<? extends E> elements) {
+        return (elements instanceof Collection) ? new HashSet<E>(cast(elements))
+                : newHashSet(elements.iterator());
+    }
+
+    /**
+     * Creates a <i>mutable</i> {@code HashSet} instance containing the given
+     * elements in unspecified order.
+     *
+     * <p>
+     * <b>Note:</b> if mutability is not required and the elements are non-null,
+     * use {@link ImmutableSet#copyOf(Iterable)} instead.
+     *
+     * <p>
+     * <b>Note:</b> if {@code E} is an {@link Enum} type, you should create an
+     * {@link EnumSet} instead.
+     *
+     * @param elements
+     *            the elements that the set should contain
+     * @return a new {@code HashSet} containing those elements (minus
+     *         duplicates)
+     */
+    public static <E> HashSet<E> newHashSet(Iterator<? extends E> elements) {
+        HashSet<E> set = newHashSet();
+        addAll(set, elements);
+        return set;
+    }
+
+    /**
+     * Creates a <i>mutable</i>, empty {@code HashSet} instance.
+     *
+     * <p>
+     * <b>Note:</b> if mutability is not required, use {@link ImmutableSet#of()}
+     * instead.
+     *
+     * <p>
+     * <b>Note:</b> if {@code E} is an {@link Enum} type, use
+     * {@link EnumSet#noneOf} instead.
+     *
+     * @return a new, empty {@code HashSet}
+     */
+    public static <E> HashSet<E> newHashSet() {
+        return new HashSet<E>();
+    }
+
+    /**
+     * Adds all elements in {@code iterator} to {@code collection}. The iterator
+     * will be left exhausted: its {@code hasNext()} method will return
+     * {@code false}.
+     *
+     * @return {@code true} if {@code collection} was modified as a result of
+     *         this operation
+     */
+    @VisibleForTesting
+    static <T> boolean addAll(Collection<T> addTo, Iterator<? extends T> iterator) {
+        Preconditions.checkNotNull(addTo);
+        Preconditions.checkNotNull(iterator);
+        boolean wasModified = false;
+        while (iterator.hasNext()) {
+            wasModified |= addTo.add(iterator.next());
+        }
+        return wasModified;
+    }
+
+    /**
+     * Used to avoid http://bugs.sun.com/view_bug.do?bug_id=6558557
+     */
+    static <T> Collection<T> cast(Iterable<T> iterable) {
+        return (Collection<T>) iterable;
     }
 
 }
