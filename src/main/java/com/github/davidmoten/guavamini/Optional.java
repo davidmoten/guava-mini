@@ -48,4 +48,9 @@ public final class Optional<T> {
         private static final long serialVersionUID = -4444814681271790328L;
 
     }
+
+    @Override
+    public String toString() {
+        return present ? String.format("Optional.of(%s)", value) : "Optional.absent";
+    }
 }

@@ -7,7 +7,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import com.github.davidmoten.guavamini.Optional;
 import com.github.davidmoten.guavamini.Optional.NotPresentException;
 
 public class OptionalTest {
@@ -55,6 +54,16 @@ public class OptionalTest {
     @Test
     public void testOrWhenNotPresent() {
         assertEquals(2L, (long) Optional.<Long> absent().or(2L));
+    }
+
+    @Test
+    public void testToStringWhenAbsent() {
+        assertEquals("Optional.absent", Optional.absent().toString());
+    }
+
+    @Test
+    public void testToStringWhenPresent() {
+        assertEquals("Optional.of(1)", Optional.of(1).toString());
     }
 
 }
