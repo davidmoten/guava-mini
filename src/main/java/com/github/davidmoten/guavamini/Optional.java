@@ -10,6 +10,11 @@ public final class Optional<T> {
         this.present = present;
     }
 
+    private Optional() {
+        //no-arg constructor to enable kryo (a bit yukky but not a big deal)
+        this(null, false);
+    }
+
     public boolean isPresent() {
         return present;
     }
@@ -40,7 +45,7 @@ public final class Optional<T> {
     }
 
     public static <T> Optional<T> absent() {
-        return new Optional<T>(null, false);
+        return new Optional<T>();
     }
 
     public static class NotPresentException extends RuntimeException {
