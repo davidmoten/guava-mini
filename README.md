@@ -20,3 +20,14 @@ Taken from Guava:
 * `Preconditions`:`checkNotNull`, `checkArgument`
 * `Lists`: `newArrayList`
 * `Sets`: `newHashSet`
+
+Getting started
+------------------
+Add this dependency to your pom.xml:
+```xml
+<dependency>
+  <groupId>com.github.davidmoten</groupId>
+  <artifactId>guava-mini</artifactId>
+  <version>0.1.1</version>
+</dependency>
+```
