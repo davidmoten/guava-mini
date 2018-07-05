@@ -19,6 +19,13 @@ public class PreconditionsTest {
     public void testNotNullDoesNotThrowException() {
         Preconditions.checkNotNull(new Object());
     }
+    
+    @Test
+    public void testNotNullReturnsTypedObject() {
+        Integer n = 1;
+        Integer m = Preconditions.checkNotNull(n);
+        assertEquals(n, m);
+    }
 
     @Test
     public void testCheckArgumentThrowsIAE() {

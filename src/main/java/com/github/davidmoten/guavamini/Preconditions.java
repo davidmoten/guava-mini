@@ -6,13 +6,14 @@ public final class Preconditions {
         // prevent instantiation
     }
 
-    public static void checkNotNull(Object o) {
-        checkNotNull(o, null);
+    public static <T> T checkNotNull(T t) {
+        return checkNotNull(t, null);
     }
 
-    public static void checkNotNull(Object o, String message) {
-        if (o == null)
+    public static <T> T checkNotNull(T t, String message) {
+        if (t == null)
             throw new NullPointerException(message);
+        return t;
     }
 
     public static void checkArgument(boolean b, String message) {
