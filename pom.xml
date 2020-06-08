@@ -14,7 +14,7 @@
 
     <name>${project.artifactId}</name>
     <description>Classes taken from Guava</description>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
 
     <url>http://github.com/davidmoten/guava-mini</url>
 
@@ -36,6 +36,7 @@
         <taglist.version>2.4</taglist.version>
         <m3.site.version>3.4</m3.site.version>
         <changelog.version>2.2</changelog.version>
+        <bundle.plugin.version>4.2.1</bundle.plugin.version>
         <coverage.reports.dir>${project.build.directory}/target/coverage-reports</coverage.reports.dir>
 
     </properties>
@@ -140,6 +141,17 @@
                             <exclude>com/github/davidmoten/guava-mini/ImageSaver.class</exclude>
                         </excludes>
                     </instrumentation>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>${bundle.plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <obrRepository>NONE</obrRepository>
+                    <instructions>
+                    </instructions>
                 </configuration>
             </plugin>
         </plugins>
