@@ -1,7 +1,7 @@
 # guava-mini
-[![Travis CI](https://travis-ci.org/davidmoten/guava-mini.svg)](https://travis-ci.org/davidmoten/guava-mini)<br/>
+<a href="https://github.com/davidmoten/guava-mini/actions/workflows/ci.yml"><img src="https://github.com/davidmoten/guava-mini/actions/workflows/ci.yml/badge.svg"/></a><br/>
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.davidmoten/guava-mini/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.github.davidmoten/guava-mini)<br/>
-
+[![codecov](https://codecov.io/gh/davidmoten/guava-mini/branch/master/graph/badge.svg)](https://codecov.io/gh/davidmoten/guava-mini)<br/>
 Some popular utilities from Guava repackaged (with different package names but same class names and method names) into a little jar (11K) available on Maven Central.
 
 Compatible with java 6 and later.
