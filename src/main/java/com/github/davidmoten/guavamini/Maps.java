@@ -43,6 +43,7 @@ public final class Maps {
 
     public static Builder factory(
             Function<? super Integer, ? extends Map<Object, Object>> factory) {
+        Preconditions.checkNotNull(factory, "factory cannot be null");
         return new Builder(factory);
     }
 
@@ -56,6 +57,7 @@ public final class Maps {
         }
 
         public Builder initialSize(int initialSize) {
+            Preconditions.checkArgument(initialSize > 0, "initialSize must be greater than 0");
             this.initialSize = initialSize;
             return this;
         }
