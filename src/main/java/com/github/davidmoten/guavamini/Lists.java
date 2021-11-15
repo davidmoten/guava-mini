@@ -13,7 +13,7 @@ public final class Lists {
         // cannot instantiate
     }
 
-    public static <E> ArrayList<E> newArrayList(E... elements) {
+    public static <E> ArrayList<E> newArrayList(@SuppressWarnings("unchecked") E... elements) {
         Preconditions.checkNotNull(elements);
         // Avoid integer overflow when a large array is passed in
         int capacity = computeArrayListCapacity(elements.length);
