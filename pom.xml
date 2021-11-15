@@ -24,13 +24,9 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <scm.url>scm:git:https://github.com/davidmoten/guava-mini.git</scm.url>
 
-        <cobertura.version>2.7</cobertura.version>
         <checkstyle.version>3.1.2</checkstyle.version>
-        <findbugs.version>3.0.1</findbugs.version>
         <javadoc.version>2.10.3</javadoc.version>
         <pmd.version>3.15.0</pmd.version>
-        <jdepend.version>2.0-beta-2</jdepend.version>
-        <javancss.version>2.1</javancss.version>
         <project.info.version>2.7</project.info.version>
         <jxr.version>2.5</jxr.version>
         <taglist.version>2.4</taglist.version>
@@ -131,19 +127,6 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>cobertura-maven-plugin</artifactId>
-                <version>${cobertura.version}</version>
-                <configuration>
-                    <aggregate>false</aggregate>
-                    <instrumentation>
-                        <excludes>
-                            <exclude>com/github/davidmoten/guava-mini/ImageSaver.class</exclude>
-                        </excludes>
-                    </instrumentation>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
                 <version>${bundle.plugin.version}</version>
@@ -168,11 +151,6 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>cobertura-maven-plugin</artifactId>
-                <version>${cobertura.version}</version>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>${checkstyle.version}</version>
@@ -188,26 +166,6 @@
                     <targetJdk>${maven.compiler.target}</targetJdk>
                     <aggregate>true</aggregate>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-                <version>${findbugs.version}</version>
-                <configuration>
-                    <xmlOutput>true</xmlOutput>
-                    <effort>Max</effort>
-                    <!--<excludeFilterFile>findbugs-exclude-filter-amsa.xml</excludeFilterFile> -->
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jdepend-maven-plugin</artifactId>
-                <version>${jdepend.version}</version>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>javancss-maven-plugin</artifactId>
-                <version>${javancss.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -231,10 +189,6 @@
                     <aggregate>true</aggregate>
                 </configuration>
             </plugin>
-            <!-- commented this plugin out because cannot run offline (e.g. at home) -->
-            <!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-changelog-plugin</artifactId> 
-                <version>${changelog.version}</version> <configuration> <username>${svn.username}</username> <password>${svn.password}</password> 
-                </configuration> </plugin> -->
         </plugins>
     </reporting>
 
