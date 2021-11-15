@@ -24,6 +24,9 @@ Taken from Guava:
 Non-guava:
 
 * `Maps`: `hashMap`, `treeMap`, `linkedHashMap`
+```java
+Map<Integer, String> map = Maps.put(1, "hi").put(2, "there").build();
+```
 
 Getting started
 ------------------
