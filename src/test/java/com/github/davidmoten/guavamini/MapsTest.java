@@ -82,4 +82,9 @@ public class MapsTest {
         assertTrue(map instanceof LinkedHashMap);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testMapWithInitialSizeInvalid() {
+        Maps.hashMap().initialSize(0);
+    }
+
 }
