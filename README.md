@@ -26,6 +26,9 @@ Non-guava:
 * `Maps`: `hashMap`, `treeMap`, `linkedHashMap`
 ```java
 Map<Integer, String> map = Maps.put(1, "hi").put(2, "there").build();
+Map<Integer, String> sorted = Maps.treeMap().put(1, "hi").put(2, "there").build();
+Map<Integer, String> linked = Maps.linkedHashMap().put(1, "hi").put(2, "there").build();
+Map<Integer, String> presized = Maps.hashMap().initialSize(1000).put(1, "hi").put(2, "there").build();
 ```
 
 Getting started
