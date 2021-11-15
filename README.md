@@ -21,6 +21,10 @@ Taken from Guava:
 * `Lists`: `newArrayList`
 * `Sets`: `newHashSet`
 
+Non-guava:
+
+* `Maps`: `hashMap`, `treeMap`, `linkedHashMap`
+
 Getting started
 ------------------
 Add this dependency to your pom.xml:
@@ -28,6 +32,6 @@ Add this dependency to your pom.xml:
 <dependency>
   <groupId>com.github.davidmoten</groupId>
   <artifactId>guava-mini</artifactId>
-  <version>0.1.1</version>
+  <version>VERSION_HERE</version>
 </dependency>
 ```
