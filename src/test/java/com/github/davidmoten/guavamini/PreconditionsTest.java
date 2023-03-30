@@ -2,6 +2,7 @@ package com.github.davidmoten.guavamini;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -19,7 +20,7 @@ public class PreconditionsTest {
     public void testNotNullDoesNotThrowException() {
         Preconditions.checkNotNull(new Object());
     }
-    
+
     @Test
     public void testNotNullReturnsTypedObject() {
         Integer n = 1;
@@ -60,6 +61,22 @@ public class PreconditionsTest {
     @Test
     public void testCoverage() {
         Asserts.assertIsUtilityClass(Preconditions.class);
+    }
+
+    @Test
+    public void testCheckArgumentNotNullThrowsIAE() {
+        try {
+            Preconditions.checkArgumentNotNull(null);
+            Assert.fail();
+        } catch (IllegalArgumentException e) {
+            assertEquals("argument cannot be null", e.getMessage());
+        }
+    }
+
+    @Test
+    public void testCheckArgumentNotNullReturnsWhenNotNull() {
+        Object o = new Object();
+        assertTrue(o == Preconditions.checkArgumentNotNull(o));
     }
 
 }
