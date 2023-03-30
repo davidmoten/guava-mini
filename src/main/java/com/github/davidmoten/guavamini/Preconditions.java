@@ -15,6 +15,17 @@ public final class Preconditions {
             throw new NullPointerException(message);
         return t;
     }
+    
+    public static <T> T checkArgumentNotNull(T t) {
+        return checkArgumentNotNull(t, "argument cannot be null");
+    }
+    
+    public static <T> T checkArgumentNotNull(T t, String message) {
+        if (t == null) {
+            throw new IllegalArgumentException(message);
+        } 
+        return t;
+    }
 
     public static void checkArgument(boolean b, String message) {
         if (!b)
