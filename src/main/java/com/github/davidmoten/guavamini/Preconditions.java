@@ -17,12 +17,12 @@ public final class Preconditions {
     }
     
     public static <T> T checkArgumentNotNull(T t) {
-        return checkArgumentNotNull(t, "argument cannot be null");
+        return checkArgumentNotNull(t, "argument");
     }
     
-    public static <T> T checkArgumentNotNull(T t, String message) {
+    public static <T> T checkArgumentNotNull(T t, String parameterName) {
         if (t == null) {
-            throw new IllegalArgumentException(message);
+            throw new IllegalArgumentException(parameterName + " cannot be null");
         } 
         return t;
     }
