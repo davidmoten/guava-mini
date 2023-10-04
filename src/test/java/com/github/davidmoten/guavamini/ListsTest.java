@@ -19,6 +19,11 @@ public class ListsTest {
         list.add(2);
         assertEquals(list, Lists.newArrayList(1, 2));
     }
+    
+    @Test
+    public void testOf() {
+        assertEquals(Lists.newArrayList(1, 2), Lists.of(1, 2));
+    }
 
     @Test
     public void createListFromIterable() {

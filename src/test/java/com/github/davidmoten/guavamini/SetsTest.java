@@ -15,6 +15,11 @@ public class SetsTest {
     public void testCreate() {
         assertTrue(Sets.newHashSet(1, 2, 3).contains(2));
     }
+    
+    @Test
+    public void testCreateUsingOf() {
+        assertTrue(Sets.of(1, 2, 3).contains(2));
+    }
 
     @Test
     public void testCreateFromIterator() {

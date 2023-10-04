@@ -47,7 +47,7 @@ public final class Optional<T> {
     public static <T> Optional<T> absent() {
         return new Optional<T>();
     }
-
+    
     public static class NotPresentException extends RuntimeException {
 
         private static final long serialVersionUID = -4444814681271790328L;

@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 import com.github.davidmoten.guavamini.annotations.VisibleForTesting;
 
 public final class Lists {
 
     private Lists() {
-        // cannot instantiate
+        // prevent instantiation
     }
 
     public static <E> ArrayList<E> newArrayList(@SuppressWarnings("unchecked") E... elements) {
@@ -20,6 +21,10 @@ public final class Lists {
         ArrayList<E> list = new ArrayList<E>(capacity);
         Collections.addAll(list, elements);
         return list;
+    }
+    
+    public static <E> List<E> of(@SuppressWarnings("unchecked") E... elements) {
+        return newArrayList(elements);
     }
 
     @VisibleForTesting

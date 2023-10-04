@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 
 import com.github.davidmoten.guavamini.annotations.VisibleForTesting;
 
@@ -15,13 +16,17 @@ public final class Sets {
 
     static final int MAX_POWER_OF_TWO = 1 << (Integer.SIZE - 2);
 
-    public static <E> HashSet<E> newHashSet(E... elements) {
+    public static <E> HashSet<E> newHashSet(@SuppressWarnings("unchecked") E... elements) {
         Preconditions.checkNotNull(elements);
         HashSet<E> set = newHashSetWithExpectedSize(elements.length);
         Collections.addAll(set, elements);
         return set;
     }
-
+    
+    public static <E> Set<E> of(@SuppressWarnings("unchecked") E... elements) {
+        return newHashSet(elements);
+    }
+    
     public static <E> HashSet<E> newHashSetWithExpectedSize(int expectedSize) {
         return new HashSet<E>(capacity(expectedSize));
     }
