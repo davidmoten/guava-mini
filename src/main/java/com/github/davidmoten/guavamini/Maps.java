@@ -64,15 +64,17 @@ public final class Maps {
 
         @SuppressWarnings("unchecked")
         public <K, V> MapBuilder<K, V> put(K key, V value) {
-            return new MapBuilder<K, V>((Map<K, V>) factory.apply(initialSize)).put(key, value);
+            return new MapBuilder<K, V>((Map<K, V>) factory.apply(initialSize), factory).put(key, value);
         }
     }
 
     public static final class MapBuilder<K, V> {
         private final Map<K, V> map;
+        private final Function<? super Integer, ? extends Map<Object, Object>> factory;
 
-        MapBuilder(Map<K, V> map) {
+        MapBuilder(Map<K, V> map, Function<? super Integer, ? extends Map<Object, Object>> factory) {
             this.map = map;
+            this.factory = factory;
         }
 
         public MapBuilder<K, V> put(K key, V value) {
@@ -84,8 +86,11 @@ public final class Maps {
             return map;
         }
 
+        @SuppressWarnings("unchecked")
         public Map<K, V> buildImmutable() {
-            return Collections.unmodifiableMap(map);
+            Map<K, V> copy = (Map<K, V>) factory.apply(map.size());
+            copy.putAll(map);
+            return Collections.unmodifiableMap(copy);
         }
     }
 
